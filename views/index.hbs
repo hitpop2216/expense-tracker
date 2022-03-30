@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-6 m-auto">
+    <div class="row m-auto mt-5 dropdown">
+      <button class="btn btn-secondary col-8 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+        aria-expanded="false">
+        類別
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
+
+    <div class="col-8">
+      <h5 class="mt-4">總金額：</h5>
+      <h1 class="text-end fw-normal" style="font-size: 100px; color: #FF7300;">25260</h1>
+    </div>
+
+    <ul class="list-group">
+      {{#each expenses}}
+        <li class="list-group-item">
+          <div class="row align-items-center">
+            <div class="col-6">
+              <div>{{this.name}}</div>
+              <div>2022/04/22</div>
+            </div>
+            <div class="col-2 align-items-center">
+              <div class="col">{{this.amount}}</div>
+            </div>
+            <div class="col-4 text-center">
+              <a href="/expense/edit">修改</a>
+              <form action="/expense/?_method=DELETE" method="POST" style="display: inline;">
+                <button type="submit">刪除</button>
+              </form>
+            </div>
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+    
+    <div class="col-8 d-flex justify-content-center mt-5">
+      <a href="/expense/new" class="btn" style="background-color: #FF7300; color: #FFFFFF; width: 150px;">新增支出</a>
+    </div>
+  </div>
+</div>
