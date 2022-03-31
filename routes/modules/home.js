@@ -6,7 +6,12 @@ router.get('/', (req, res) => {
   Expense
     .find()
     .lean()
-    .then(expenses => res.render('index', {expenses}))
+    .then(expenses => {
+      expenses.forEach(expense => {
+        expense.date = expense.date.toLocaleDateString()
+      })
+      res.render('index', { expenses })
+    })
     .catch(err => console.log(err))
 })
 

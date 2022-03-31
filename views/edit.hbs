@@ -1,0 +1,11 @@
+<form action="/expense/{{expense._id}}/?_method=PUT" method="POST" style="display: inline;">
+  <div>
+    <label for="name">名稱</label>
+    <input type="text" name="name" id="name" value="{{expense.name}}">
+  </div>
+  <div>
+    <label for="amount">金額</label>
+    <input type="number" name="amount" id="amount" value="{{expense.amount}}">
+  </div>
+  <button class="btn btn-primary" type="submit">修改</button>
+</form>

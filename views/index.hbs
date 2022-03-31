@@ -23,14 +23,14 @@
           <div class="row align-items-center">
             <div class="col-6">
               <div>{{this.name}}</div>
-              <div>2022/04/22</div>
+              <div>{{this.date}}</div>
             </div>
             <div class="col-2 align-items-center">
               <div class="col">{{this.amount}}</div>
             </div>
             <div class="col-4 text-center">
-              <a href="/expense/edit">修改</a>
-              <form action="/expense/?_method=DELETE" method="POST" style="display: inline;">
+              <a href="/expense/{{this._id}}/edit">修改</a>
+              <form action="/expense/{{this._id}}/?_method=DELETE" method="POST" style="display: inline;">
                 <button type="submit">刪除</button>
               </form>
             </div>
