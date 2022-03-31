@@ -1,23 +1,20 @@
 <div class="row">
   <div class="col-md-6 m-auto">
-    <div class="row m-auto mt-5 dropdown">
-      <button class="btn btn-secondary col-8 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
-        aria-expanded="false">
-        類別
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-      </ul>
-    </div>
+    <select class="form-select row m-auto mt-5">
+      <option selected>類別</option>
+      <option value="1">家居物業</option>
+      <option value="2">交通出行</option>
+      <option value="3">休閒娛樂</option>
+      <option value="4">餐飲飲食</option>
+      <option value="5">其他</option>
+    </select>
 
     <div class="col-8">
       <h5 class="mt-4">總金額：</h5>
       <h1 class="text-end fw-normal" style="font-size: 100px; color: #FF7300;">25260</h1>
     </div>
 
-    <ul class="list-group">
+    <ul class="list-group list-group-flush col">
       {{#each expenses}}
         <li class="list-group-item">
           <div class="row align-items-center">
@@ -29,9 +26,9 @@
               <div class="col">{{this.amount}}</div>
             </div>
             <div class="col-4 text-center">
-              <a href="/expense/{{this._id}}/edit">修改</a>
+              <a href="/expense/{{this._id}}/edit" class="btn btn-outline-success ms-2">修改</a>
               <form action="/expense/{{this._id}}/?_method=DELETE" method="POST" style="display: inline;">
-                <button type="submit">刪除</button>
+                <button type="submit" class="btn btn-outline-danger ms-2">刪除</button>
               </form>
             </div>
           </div>

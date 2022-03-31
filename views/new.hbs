@@ -1,11 +1,40 @@
-<form action="/expense/new" method="POST" style="display: inline;">
-  <div>
-    <label for="name">名稱</label>
-    <input type="text" name="name" id="name">
+<div class="row">
+  <div class="col-md-6 m-auto">
+    <div class="row mt-5">
+      <div class="mt-3 row justify-content-center">
+        <label class="col-2"><span class="text-danger">*</span>必填欄位</label>
+        <h4 class="col-4 text-center">請輸入你的支出</h4>
+      </div>
+    </div>
+    <form action="/expense/new" method="POST" class="row">
+      <div class="mt-5 row justify-content-center">
+        <label class="col-2" for="name">名稱<span class="text-danger">*</span>：</label>
+        <input class="col-4" type="text" name="name" id="name">
+      </div>
+      <div class="mt-5 row justify-content-center">
+        <label class="col-2" for="date">日期<span class="text-danger">*</span>：</label>
+        <input class="col-4" type="date" name="date" id="date">
+      </div>
+      <div class="mt-5 row justify-content-center">
+        <label class="col-2" for="category">類別<span class="text-danger">*</span>：</label>
+        <select class="form-select-sm col-4" name="category" id="category">
+          <option selected>類別</option>
+          <option value="1">家居物業</option>
+          <option value="2">交通出行</option>
+          <option value="3">休閒娛樂</option>
+          <option value="4">餐飲飲食</option>
+          <option value="5">其他</option>
+        </select>
+      </div>
+
+      <div class="mt-5 row justify-content-center">
+        <label class="col-2" for="amount">金額<span class="text-danger">*</span>：</label>
+        <input class="col-4" type="number" name="amount" id="amount">
+      </div>
+      <div class="mt-5 row justify-content-center">
+        <label class="col-2"></label>
+        <button class="col-4 btn btn-primary" type="submit">新增支出</button>
+      </div>
+    </form>
   </div>
-  <div>
-    <label for="amount">金額</label>
-    <input type="number" name="amount" id="amount">
-  </div>
-  <button class="btn btn-primary" type="submit">新增</button>
-</form>
+</div>
