@@ -6,18 +6,18 @@
         <h4 class="col-4 text-center">請修改你的支出</h4>
       </div>
     </div>
-    <form action="/expense/new" method="POST" class="row">
+    <form action="/record/{{record._id}}?_method=PUT" method="POST" class="row">
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="name">名稱<span class="text-danger">*</span>：</label>
-        <input class="col-4" type="text" name="name" id="name">
+        <input class="col-4" type="text" name="name" id="name" value="{{record.name}}" required>
       </div>
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="date">日期<span class="text-danger">*</span>：</label>
-        <input class="col-4" type="date" name="date" id="date">
+        <input class="col-4" type="date" name="date" id="date" value="{{record.date}}" required>
       </div>
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="category">類別<span class="text-danger">*</span>：</label>
-        <select class="form-select-sm col-4" name="category" id="category">
+        <select class="form-select-sm col-4" name="category" id="category" aria-label="{{record.category}}" required>
           <option selected>類別</option>
           <option value="1">家居物業</option>
           <option value="2">交通出行</option>
@@ -29,7 +29,7 @@
 
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="amount">金額<span class="text-danger">*</span>：</label>
-        <input class="col-4" type="number" name="amount" id="amount">
+        <input class="col-4" type="number" name="amount" id="amount" value="{{record.amount}}" required>
       </div>
       <div class="mt-5 row justify-content-center">
         <label class="col-2"></label>

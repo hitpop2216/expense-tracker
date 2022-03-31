@@ -13,12 +13,15 @@
       <h5 class="mt-4">總金額：</h5>
       <h1 class="text-end fw-normal" style="font-size: 100px; color: #FF7300;">25260</h1>
     </div>
-
+    {{#each icons}}
+      <i class="{{this.icon}} fa-2x col-1"></i>
+    {{/each}}
     <ul class="list-group list-group-flush col">
-      {{#each expenses}}
+      {{#each records}}
         <li class="list-group-item">
           <div class="row align-items-center">
-            <div class="col-6">
+            <i class="{{this.icon}} fa-2x col-1"></i>
+            <div class="col-5">
               <div>{{this.name}}</div>
               <div>{{this.date}}</div>
             </div>
@@ -26,8 +29,8 @@
               <div class="col">{{this.amount}}</div>
             </div>
             <div class="col-4 text-center">
-              <a href="/expense/{{this._id}}/edit" class="btn btn-outline-success ms-2">修改</a>
-              <form action="/expense/{{this._id}}/?_method=DELETE" method="POST" style="display: inline;">
+              <a href="/record/{{this._id}}/edit" class="btn btn-outline-success ms-2">修改</a>
+              <form action="/record/{{this._id}}/?_method=DELETE" method="POST" style="display: inline;">
                 <button type="submit" class="btn btn-outline-danger ms-2">刪除</button>
               </form>
             </div>
@@ -37,7 +40,7 @@
     </ul>
     
     <div class="col-8 d-flex justify-content-center mt-5">
-      <a href="/expense/new" class="btn" style="background-color: #FF7300; color: #FFFFFF; width: 150px;">新增支出</a>
+      <a href="/record/new" class="btn" style="background-color: #FF7300; color: #FFFFFF; width: 150px;">新增支出</a>
     </div>
   </div>
 </div>

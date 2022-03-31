@@ -6,14 +6,14 @@
         <h4 class="col-4 text-center">請輸入你的支出</h4>
       </div>
     </div>
-    <form action="/expense/new" method="POST" class="row">
+    <form action="/record/new" method="POST" class="row">
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="name">名稱<span class="text-danger">*</span>：</label>
-        <input class="col-4" type="text" name="name" id="name">
+        <input class="col-4" type="text" name="name" id="name" required>
       </div>
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="date">日期<span class="text-danger">*</span>：</label>
-        <input class="col-4" type="date" name="date" id="date">
+        <input class="col-4" type="date" name="date" id="date" required>
       </div>
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="category">類別<span class="text-danger">*</span>：</label>
@@ -29,7 +29,7 @@
 
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="amount">金額<span class="text-danger">*</span>：</label>
-        <input class="col-4" type="number" name="amount" id="amount">
+        <input class="col-4" type="number" name="amount" id="amount" required>
       </div>
       <div class="mt-5 row justify-content-center">
         <label class="col-2"></label>
