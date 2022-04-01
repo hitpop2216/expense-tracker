@@ -6,30 +6,28 @@
         <h4 class="col-4 text-center">請輸入你的支出</h4>
       </div>
     </div>
-    <form action="/record/new" method="POST" class="row">
+    <form action="/records/new" method="POST" class="row">
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="name">名稱<span class="text-danger">*</span>：</label>
-        <input class="col-4" type="text" name="name" id="name" required>
+        <input class="col-4" type="text" name="name" id="name" value="{{name}}" required>
       </div>
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="date">日期<span class="text-danger">*</span>：</label>
-        <input class="col-4" type="date" name="date" id="date" required>
+        <input class="col-4" type="date" name="date" id="date" value="{{date}}" required>
       </div>
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="category">類別<span class="text-danger">*</span>：</label>
         <select class="form-select-sm col-4" name="category" id="category">
           <option selected>類別</option>
-          <option value="1">家居物業</option>
-          <option value="2">交通出行</option>
-          <option value="3">休閒娛樂</option>
-          <option value="4">餐飲飲食</option>
-          <option value="5">其他</option>
+          {{#each categories}}
+            <option value="{{this._id}}">{{this.name}}</option>
+          {{/each}}
         </select>
       </div>
 
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="amount">金額<span class="text-danger">*</span>：</label>
-        <input class="col-4" type="number" name="amount" id="amount" required>
+        <input class="col-4" type="number" name="amount" id="amount" value="{{amount}}" required>
       </div>
       <div class="mt-5 row justify-content-center">
         <label class="col-2"></label>

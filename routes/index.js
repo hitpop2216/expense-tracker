@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router()
 
-const record = require('./modules/record')
+const records = require('./modules/records')
 const home = require('./modules/home')
 
-router.use('/record', record)
+router.use('/records', records)
 router.use('/', home)
 
 module.exports = router

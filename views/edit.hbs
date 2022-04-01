@@ -6,7 +6,7 @@
         <h4 class="col-4 text-center">請修改你的支出</h4>
       </div>
     </div>
-    <form action="/record/{{record._id}}?_method=PUT" method="POST" class="row">
+    <form action="/records/{{record._id}}?_method=PUT" method="POST" class="row">
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="name">名稱<span class="text-danger">*</span>：</label>
         <input class="col-4" type="text" name="name" id="name" value="{{record.name}}" required>
@@ -17,13 +17,11 @@
       </div>
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="category">類別<span class="text-danger">*</span>：</label>
-        <select class="form-select-sm col-4" name="category" id="category" aria-label="{{record.category}}" required>
-          <option selected>類別</option>
-          <option value="1">家居物業</option>
-          <option value="2">交通出行</option>
-          <option value="3">休閒娛樂</option>
-          <option value="4">餐飲飲食</option>
-          <option value="5">其他</option>
+        <select class="form-select-sm col-4" name="category" id="category" required>
+          <option value="{{record.categoryId}}" selected>{{record.categoryName}}</option>
+          {{#each categories}}
+          <option value="{{this._id}}">{{this.name}}</option>
+          {{/each}}
         </select>
       </div>
 
