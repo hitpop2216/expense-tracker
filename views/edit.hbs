@@ -9,16 +9,20 @@
     <form action="/records/{{record._id}}?_method=PUT" method="POST" class="row">
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="name">名稱<span class="text-danger">*</span>：</label>
-        <input class="col-4" type="text" name="name" id="name" value="{{record.name}}" required>
+        <input class="col-4" type="text" name="name" id="name" value="{{#if record}}{{record.name}}{{else}}{{name}}{{/if}}" required>
       </div>
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="date">日期<span class="text-danger">*</span>：</label>
-        <input class="col-4" type="date" name="date" id="date" value="{{record.date}}" required>
+        <input class="col-4" type="date" name="date" id="date" value="{{#if record}}{{record.date}}{{else}}{{date}}{{/if}}" required>
       </div>
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="category">類別<span class="text-danger">*</span>：</label>
         <select class="form-select-sm col-4" name="category" id="category" required>
-          <option value="{{record.categoryId}}" selected>{{record.categoryName}}</option>
+          {{#if record}}
+            <option value="{{record.categoryId}}">{{record.categoryName}}</option>
+          {{else}}
+            <option value="{{categoryOne._id}}">{{categoryOne.name}}</option>
+          {{/if}}
           {{#each categories}}
           <option value="{{this._id}}">{{this.name}}</option>
           {{/each}}

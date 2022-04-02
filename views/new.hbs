@@ -18,7 +18,9 @@
       <div class="mt-5 row justify-content-center">
         <label class="col-2" for="category">類別<span class="text-danger">*</span>：</label>
         <select class="form-select-sm col-4" name="category" id="category">
-          <option selected>類別</option>
+          {{#if categoryOne}}
+            <option value="{{categoryOne._id}}">{{categoryOne.name}}</option>
+          {{/if}}
           {{#each categories}}
             <option value="{{this._id}}">{{this.name}}</option>
           {{/each}}

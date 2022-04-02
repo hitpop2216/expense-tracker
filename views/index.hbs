@@ -1,21 +1,28 @@
-<div class="row">
+<div class="row">  
   <div class="col-md-6 m-auto">
-    <select class="form-select row m-auto mt-5">
-      <option selected>類別</option>
-      <option value="1">家居物業</option>
-      <option value="2">交通出行</option>
-      <option value="3">休閒娛樂</option>
-      <option value="4">餐飲飲食</option>
-      <option value="5">其他</option>
-    </select>
+    <div class="dropdown mt-5">
+      <button class="btn btn-outline-secondary form-select" type="button" id="dropdownMenuButton1"
+        data-bs-toggle="dropdown">
+        {{categoryName}}
+      </button>
+      <ul class="dropdown-menu">
+        <li>
+          <form action="/" id="categoryName">
+            <button class="dropdown-item" type="submit" name="categoryInfo" id="categoryInfo" value="全部&">
+              全部
+            </button>
+          {{#each categoryDropdown}}
+              <button class="dropdown-item" type="submit" name="categoryInfo" id="categoryInfo" value="{{this.name}}&{{this._id}}">{{this.name}}</button>
+          {{/each}}
+          </form>
+        </li>
+      </ul>
+    </div>
 
     <div class="col-8">
       <h5 class="mt-4">總金額：</h5>
-      <h1 class="text-end fw-normal" style="font-size: 100px; color: #FF7300;">25260</h1>
+      <h1 class="text-end fw-normal" style="font-size: 100px; color: #FF7300;">{{amountTotal}}</h1>
     </div>
-    {{#each icons}}
-      <i class="{{this.icon}} fa-2x col-1"></i>
-    {{/each}}
     <ul class="list-group list-group-flush col">
       {{#each records}}
         <li class="list-group-item">
@@ -44,3 +51,4 @@
     </div>
   </div>
 </div>
+<script src="/javascripts/onselect.js"></script>

@@ -15,16 +15,25 @@ router.get('/new', (req, res) => {
 })
 router.post('/new', (req, res) => {
   const { name, amount, date, category } = req.body
-  if(category === '類別') {
-    console.log('請選擇類別。')
-    return res.render('new', { name, amount, date })
-  }
   return Category
     .findOne({ _id: category})
-    .then(category => {
+    .lean()
+    .then(categoryOne => {
+      if (amount < 0) {
+        console.log('金額不能為負。')
+        return Category
+          .find()
+          .lean()
+          .then(categories => {
+            categories = categories.filter(item => {
+              return item.name !== categoryOne.name
+            })
+            return res.render('new', { name, date, categories, categoryOne})
+          })
+      }
       return Record.create({name, amount, date, categoryId: category})
+        .then(() => res.redirect('/'))
     })
-    .then(() => res.redirect('/'))
     .catch(err => console.log(err))
 })
 
@@ -54,7 +63,18 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   const { name, amount, date, category } = req.body
   const _id = req.params.id
-  Record
+  if (amount < 0) {
+    console.log('金額不能為負。')
+    return Category
+      .find()
+      .lean()
+      .then(items => {
+        const categories = items.filter(item => item._id.toString() !== category)
+        const categoryOne = items.find(item => item._id.toString()  === category)
+        return res.render('edit', { name, date, categories, categoryOne })
+      })
+  }
+  return Record
     .findOneAndUpdate({_id}, {name, amount, date, categoryId: category})
     .then(() => res.redirect('/'))
     .catch(err => console.log(err))
