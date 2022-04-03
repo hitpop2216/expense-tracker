@@ -13,7 +13,11 @@
   <nav class="navbar navbar-light bg-secondary bg-opacity-25">
     <div class="container d-flex justify-content-between">
       <a class="navbar-brand fw-bold" href="/">家庭記帳本</a>
-      <a href="/users/login" class="btn btn-outline-secondary">登入</a>
+      {{#if isAuthenticated}}
+        <a href="/users/logout" class="btn btn-outline-secondary">登出</a>
+      {{else}}
+        <a href="/users/login" class="btn btn-outline-secondary">登入</a>
+      {{/if}}
     </div>
   </nav>
   {{{body}}}
