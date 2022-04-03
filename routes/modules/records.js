@@ -14,6 +14,7 @@ router.get('/new', (req, res) => {
     .catch(err => console.log(err))
 })
 router.post('/new', (req, res) => {
+  const userId = req.user._id
   const { name, amount, date, category } = req.body
   return Category
     .findOne({ _id: category})
@@ -31,7 +32,7 @@ router.post('/new', (req, res) => {
             return res.render('new', { name, date, categories, categoryOne})
           })
       }
-      return Record.create({name, amount, date, categoryId: category})
+      return Record.create({ name, amount, date, categoryId: category, userId})
         .then(() => res.redirect('/'))
     })
     .catch(err => console.log(err))

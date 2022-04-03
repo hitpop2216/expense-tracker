@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
   let filteredRecord = []
   let amountTotal = 0
   Record
-    .find()
+    .find({ userId: req.user._id })
     .lean()
     .then(records => {
       filteredRecord = records.filter(record => record.categoryId.toString() === categoryId)
