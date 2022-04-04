@@ -7,26 +7,26 @@
         <div class="form-group mb-3">
           <label for="name">Name<span class="text-danger">*</span></label>
           <input type="text" name="name" id="name" placeholder="Enter Name" class="form-control" required value="{{name}}">
-          <div class="valid-feedback">Good!</div>
+          <div class="valid-feedback"></div>
           <div class="invalid-feedback">請輸入名字</div>
         </div>
         <div class="form-group mb-3">
           <label for="email">Email<span class="text-danger">*</span></label>
           <input type="email" name="email" id="email" placeholder="Enter Email" class="form-control" required value="{{email}}">
-          <div class="valid-feedback">Good!</div>
+          <div class="valid-feedback"></div>
           <div class="invalid-feedback">請輸入Email</div>
         </div>
         <div class="form-group mb-3">
           <label for="password">Password<span class="text-danger">*</span></label>
           <input type="password" name="password" id="password" placeholder="Enter Password" class="form-control"
             required value="{{password}}">
-            <div class="valid-feedback">Good!</div>
+            <div class="valid-feedback"></div>
             <div class="invalid-feedback">請輸入密碼</div>
         </div>
         <div class="form-group mb-3">
           <label for="confirmPassword">Confirm Password<span class="text-danger">*</span></label>
           <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" class="form-control" required value="{{confirmPassword}}">
-          <div class="valid-feedback">Good!</div>
+          <div class="valid-feedback"></div>
           <div class="invalid-feedback">請輸入確認密碼</div>
         </div>
         
@@ -55,7 +55,6 @@
   const submitButton = document.querySelector('#submitButton')
   const form = document.querySelector('#form')
   submitButton.addEventListener('click', function onSubmitButtonClicked(event) {
-    event.preventDefault()
     form.classList.add('was-validated')
   })
 </script>

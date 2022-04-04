@@ -11,7 +11,7 @@ module.exports = app => {
 
   passport.use(new LocalStrategy({ usernameField: 'email', passReqToCallback: true},(req,email, password, done) => {
     User
-      .findOne({email, name})
+      .findOne({email})
       .then(user => {
         if(!user) done(null, false, req.flash('warning_msg', '無此使用者。'))
         return bcrypt.compare(password, user.password)
