@@ -1,5 +1,7 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
+const GoogleStrategy = require('passport-google-oauth20').Strategy
+const FacebookStrategy = require('passport-facebook').Strategy
 const User = require('../models/user')
 const bcrypt = require('bcryptjs')
 
@@ -9,7 +11,7 @@ module.exports = app => {
 
   passport.use(new LocalStrategy({ usernameField: 'email', passReqToCallback: true},(req,email, password, done) => {
     User
-      .findOne({email})
+      .findOne({email, name})
       .then(user => {
         if(!user) done(null, false, req.flash('warning_msg', '無此使用者。'))
         return bcrypt.compare(password, user.password)
@@ -19,6 +21,56 @@ module.exports = app => {
           })
       })
       .catch(err => done(err, false))
+  }))
+
+  passport.use(new GoogleStrategy({
+    clientID: process.env.GOOGLE_ID,
+    clientSecret: process.env.GOOGLE_SECRET,
+    callbackURL: process.env.GOOGLE_CALLBACK,
+    profileFields: ['displayName', 'email']
+  }, (accessToken, refreshToken, profile, done)=>{
+    const { name, email } = profile._json
+    return User
+      .findOne({ email, name })
+      .then(user => {
+        if (user) return done(null, user)
+        const randomPassword = Math.random().toString(36).slice(-8)
+        return bcrypt
+          .genSalt(10)
+          .then(salt => bcrypt.hash(randomPassword, salt))
+          .then(hash => User.create({
+            name,
+            email,
+            password: hash
+          }))
+          .then(user => done(null, user))
+          .catch(err => done(err))
+      })
+  }))
+
+  passport.use(new FacebookStrategy({
+    clientID: process.env.FACEBOOK_ID,
+    clientSecret: process.env.FACEBOOK_SECRET,
+    callbackURL: process.env.FACEBOOK_CALLBACK,
+    profileFields: ['displayName', 'email']
+  }, (accessToken, refreshToken, profile, done) => {
+    const { name, email } = profile._json
+    return User
+      .findOne({email})
+      .then(user => {
+        if (user) return done(null, user)
+        const randomPassword = Math.random().toString(36).slice(-8)
+        return bcrypt
+          .genSalt(10)
+          .then(salt => bcrypt.hash(randomPassword, salt))
+          .then(hash => User.create({
+            name,
+            email,
+            password: hash
+          }))
+          .then(user => done(null, user))
+          .catch(err => done(err))
+      })
   }))
 
   passport.serializeUser((user, done) => {

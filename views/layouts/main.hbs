@@ -12,7 +12,9 @@
 <body>
   <nav class="navbar navbar-light bg-secondary bg-opacity-25">
     <div class="container d-flex justify-content-between">
-      <a class="navbar-brand fw-bold" href="/">家庭記帳本</a>
+      <a class="navbar-brand fw-bold" href="/">
+        {{#if isAuthenticated}}{{user.name}}的{{/if}}家庭記帳本
+      </a>
       {{#if isAuthenticated}}
         <a href="/users/logout" class="btn btn-outline-secondary">登出</a>
       {{else}}
