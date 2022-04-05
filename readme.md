@@ -1,7 +1,7 @@
 # 我的餐廳清單
 
 ![Index page about Restaurant List](./public/images/layout.png)
-
+![Index page about Restaurant List](./public/images/index.png)
 ## 介紹
 
 紀錄屬於自己的記帳本，可以在此網站上擁有自己的帳號管理各項支出，並且能夠瀏覽支出、分類支出、修改支出。
