@@ -32,7 +32,7 @@ router.post('/register', (req, res) => {
     })
   }
   return User
-    .findOne({email})
+    .findOne({email, name})
     .then(user => {
       if(user) {
         errors.push({ message: '此 email 已註冊。' })
