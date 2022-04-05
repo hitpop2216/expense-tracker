@@ -32,10 +32,10 @@ router.post('/register', (req, res) => {
     })
   }
   return User
-    .findOne({email, name})
+    .findOne({email})
     .then(user => {
       if(user) {
-        errors.push({ message: '此 email 已註冊。' })
+        errors.push({ message: '此 email 已註冊或已用 Facebook/Google 登入註冊。' })
         return res.render('register', {
           errors,
           name,
