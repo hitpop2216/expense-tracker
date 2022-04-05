@@ -27,10 +27,12 @@
         <a class="text-info" href="/users/login"><i class="fas fa-arrow-left"></i></a>
         <h2 class="mb-3 text-center">Reset Password</h2>
         {{> message}}
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-          驗證成功！
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+        {{#if verificationState}}
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            驗證成功！
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {{/if}}
         <form action="/users/reset" method="POST">
           <div class="form-group mb-3">
             <input type="email" name="email" id="email" placeholder="Enter Email" class="form-control" value="{{email}}">

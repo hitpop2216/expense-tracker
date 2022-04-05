@@ -94,6 +94,7 @@ router.post('/forget', (req, res) => {
     })
     .catch(err => console.log(err))
 })
+
 // 重設密碼
 router.get('/reset', (req, res) => {
   res.render('reset')

@@ -11,7 +11,7 @@
         <label class="col-2" for="name">名稱<span class="text-danger">*</span>：</label>
         <div class="col-4">
           <input class="form-control" type="text" name="name" id="name" value="{{name}}" required>
-          <div class="valid-feedback">Good!</div>
+          <div class="valid-feedback"></div>
           <div class="invalid-feedback">請輸入名稱</div>
         </div>
       </div>
@@ -19,7 +19,7 @@
         <label class="col-2" for="date">日期<span class="text-danger">*</span>：</label>
         <div class="col-4">
           <input class="col-4 form-control" type="date" name="date" id="date" value="{{date}}" required>
-          <div class="valid-feedback">Good!</div>
+          <div class="valid-feedback"></div>
           <div class="invalid-feedback">請輸入日期</div>
         </div>
       </div>
@@ -34,7 +34,7 @@
             <option value="{{this._id}}">{{this.name}}</option>
             {{/each}}
           </select>
-          <div class="valid-feedback">Good!</div>
+          <div class="valid-feedback"></div>
           <div class="invalid-feedback">請輸入類別</div>
         </div>
       </div>
@@ -43,7 +43,7 @@
         <label class="col-2" for="amount">金額<span class="text-danger">*</span>：</label>
         <div class="col-4">
           <input class="form-control" type="number" name="amount" id="amount" value="{{amount}}" required>
-          <div class="valid-feedback">Good!</div>
+          <div class="valid-feedback"></div>
           <div class="invalid-feedback">請輸入金額</div>
         </div>
       </div>
@@ -58,7 +58,6 @@
   const submitButton = document.querySelector('#submitButton')
   const form = document.querySelector('#form')
   submitButton.addEventListener('click', function onSubmitButtonClicked(event) {
-    event.preventDefault()
     form.classList.add('was-validated')
   })
 </script>
