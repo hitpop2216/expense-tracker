@@ -1,4 +1,4 @@
-# 我的餐廳清單
+# 我的記帳本
 
 ![Index page about Restaurant List](./public/images/layout.png)
 ![Index page about Restaurant List](./public/images/index.png)
